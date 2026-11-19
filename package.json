@@ -1,0 +1,19 @@
+{
+  "name": "jachi-map",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174 --strictPort",
+    "fetch-deals": "node --env-file-if-exists=.env scripts/fetch-deals.mjs",
+    "fetch-amenities": "node --env-file-if-exists=.env scripts/fetch-amenities.mjs",
+    "fetch-travel-times": "node scripts/fetch-travel-times.mjs",
+    "fetch-amenity-walk": "node scripts/fetch-amenity-walk.mjs",
+    "fetch-lh": "node --env-file-if-exists=.env scripts/fetch-lh.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}

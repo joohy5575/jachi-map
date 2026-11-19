@@ -1,0 +1,319 @@
+:root {
+  --ink: #1b1f27;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --bg: #ffffff;
+  --soft: #f4f6f9;
+  --brand: #2456e6;
+  --price: #b4235a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Pretendard', 'Noto Sans KR', sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+[hidden] { display: none !important; }
+
+#app { display: flex; height: 100%; }
+
+/* ---------- 왼쪽 패널 ---------- */
+#panel {
+  width: 380px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  z-index: 2;
+  background: var(--bg);
+}
+
+.panel-head { padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
+.panel-head h1 { margin: 0; font-size: 22px; letter-spacing: -0.02em; }
+.sub { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.badge {
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #fff4d6;
+  color: #7a5200;
+  font-size: 12px;
+}
+.badge:empty { display: none; }
+
+.filters { padding: 16px 20px; background: var(--soft); border-bottom: 1px solid var(--line); }
+.filter { display: block; margin-bottom: 12px; font-size: 14px; }
+.filter span { display: flex; justify-content: space-between; }
+.filter b { color: var(--brand); font-variant-numeric: tabular-nums; }
+.filter input { width: 100%; margin: 6px 0 0; accent-color: var(--brand); }
+
+.filter-row { display: flex; gap: 10px; margin-top: 12px; }
+.filter-row label { flex: 1; min-width: 0; font-size: 12px; color: var(--muted); }
+.filter-row select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+.commute { display: block; margin-top: 2px; font-size: 13px; font-weight: 600; color: #7a1f2b; }
+
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chips button {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 13px;
+}
+.chips button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* LH 임대공고 상자 */
+.lh-box { margin: 12px 20px 0; border: 1px solid #b9d7c2; border-radius: 10px; background: #f1f8f3; }
+.lh-box summary { padding: 11px 14px; font-size: 14px; font-weight: 700; color: #1d6b3a; cursor: pointer; }
+.lh-box ul { list-style: none; margin: 0; padding: 0 14px; max-height: 280px; overflow-y: auto; }
+.lh-box li { padding: 9px 0; border-top: 1px solid #d5e8db; font-size: 13px; line-height: 1.5; }
+.lh-box li a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.lh-box li a:hover { text-decoration: underline; }
+.lh-box li.closed a { color: var(--muted); font-weight: 400; }
+.lh-box .hint { margin: 0; padding: 8px 14px 12px; }
+
+/* 건물 상세의 "매물 사이트에서 보기" 링크 */
+.listing-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.listing-links a {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.listing-links a:hover { border-color: var(--ink); }
+
+.count { margin: 0; padding: 12px 20px 4px; font-size: 13px; color: var(--muted); }
+
+.building-list { list-style: none; margin: 0; padding: 0; }
+.building-item {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  text-align: left;
+}
+.building-item:hover { background: var(--soft); }
+.building-item .name { font-weight: 600; margin-left: 6px; }
+.building-item .price {
+  display: block;
+  margin: 6px 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--price);
+  font-variant-numeric: tabular-nums;
+}
+.meta { display: block; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.empty { padding: 28px 20px; color: var(--muted); font-size: 14px; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e8eefc;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------- 상세 화면 ---------- */
+#detail-view { padding: 16px 20px 28px; }
+.back { display: block; padding: 0; margin-bottom: 16px; border: 0; background: none; color: var(--muted); font-size: 14px; }
+.back:hover { color: var(--ink); }
+#detail-view h2 { margin: 8px 0 14px; font-size: 20px; letter-spacing: -0.02em; }
+#detail-view h3 { margin: 22px 0 8px; font-size: 15px; }
+#detail-view h3 small { font-weight: 400; color: var(--muted); margin-left: 4px; }
+
+.facts { margin: 0; border-top: 1px solid var(--line); }
+.facts div { display: flex; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.facts dt { width: 84px; flex: none; color: var(--muted); }
+.facts dd { margin: 0; }
+
+.deals { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.deals th { text-align: left; font-weight: 500; color: var(--muted); padding: 8px 4px; border-bottom: 1px solid var(--line); }
+.deals td { padding: 10px 4px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.deals td.price { font-weight: 700; color: var(--price); }
+.deals tr.dim { opacity: 0.4; }
+.hint { font-size: 12px; color: var(--muted); }
+
+/* ---------- 지도 ---------- */
+#map-wrap { flex: 1; min-width: 0; height: 100%; position: relative; }
+#map { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); }
+
+/* 지도 위 편의시설 버튼 줄 */
+#amenity-bar { position: absolute; top: 12px; left: 12px; right: 60px; z-index: 1100; pointer-events: none; }
+#amenity-bar button { pointer-events: auto; box-shadow: 0 1px 4px rgb(0 0 0 / 0.25); }
+
+/* 로드뷰: 지도 전체를 덮는다 */
+#roadview-wrap { position: absolute; inset: 0; z-index: 1200; background: #1b1f27; }
+#roadview { position: absolute; inset: 0; }
+.roadview-bar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.roadview-bar > * {
+  pointer-events: auto;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: rgb(27 31 39 / 0.85);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+#roadview-msg {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 15px;
+}
+.roadview-btn {
+  margin-top: 12px;
+  padding: 9px 14px;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+}
+.roadview-btn:hover { background: var(--ink); color: #fff; }
+
+/* 지도 위 편의시설 아이콘 */
+.amenity-marker {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid #9aa1ad;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+}
+.amenity-marker:hover { border-color: var(--ink); transform: scale(1.2); }
+
+/* 상세 패널의 주변 편의시설 표 */
+.amenity-row { cursor: pointer; }
+.amenity-row:hover { background: var(--soft); }
+.amenity-row td { white-space: normal; }
+.amenity-row td:first-child, .amenity-row td:nth-child(2) { white-space: nowrap; }
+
+.price-marker {
+  position: relative;
+  padding: 5px 9px;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.25);
+  margin-bottom: 6px;
+}
+.price-marker:hover, .price-marker.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+.price-marker.selected { z-index: 5; transform: scale(1.1); }
+
+/* 다른 가격표와 겹쳐서 점으로 줄어든 상태. 마우스를 올리면 가격표로 펼쳐진다. */
+.price-marker.dot:not(:hover) {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  margin-bottom: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--brand);
+  font-size: 0;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.4);
+}
+
+/* 목적지 핀 (학교 건물, 역 등) */
+.dest-pin {
+  padding: 3px 8px;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  background: #7a1f2b;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+}
+/* 고르지 않은 목적지는 작은 점. 마우스를 올리면 이름이 나온다. */
+.dest-pin:not(.on):not(.always):not(:hover) {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-width: 2px;
+  font-size: 0;
+}
+.dest-pin:hover, .dest-pin.on { background: #e0457b; }
+
+/* 접었다 펼 수 있는 구역 (제목을 누르면 접힘) */
+.fold summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px; }
+.fold summary::-webkit-details-marker { display: none; }
+.fold summary::before { content: '▸'; margin-top: 14px; color: var(--muted); }
+.fold[open] summary::before { content: '▾'; }
+.fold summary h3 { flex: 1; }
+.fold summary:hover h3 { color: var(--brand); }
+
+/* 고른 경로의 거리·오르막 요약 */
+.route-summary { margin: 8px 0; padding: 10px 12px; border-radius: 8px; background: var(--soft); font-size: 13px; line-height: 1.6; }
+.route-summary b { font-weight: 700; }
+.route-summary .up { color: #d9342b; font-weight: 700; }
+.route-summary .down { color: #2f6fde; font-weight: 700; }
+.dest-pin.on { font-size: 13px; padding: 5px 10px; }
+
+/* 상세 패널의 목적지별 소요시간 표 */
+.mode-chips { margin-bottom: 6px; }
+.dests small { color: var(--muted); margin-left: 2px; }
+.dest-row { cursor: pointer; }
+.dest-row:hover { background: var(--soft); }
+.dest-row.on { background: #fde8ef; font-weight: 700; }
+
+/* 임시 지도(Leaflet)에서 가격표의 "가운데 아래"가 좌표에 오도록 */
+.osm-anchor > * { position: absolute; left: 0; bottom: 0; transform: translateX(-50%); }
+.osm-anchor > .price-marker.selected { transform: translateX(-50%) scale(1.1); }
+
+/* ---------- 좁은 화면(휴대폰) ---------- */
+@media (max-width: 720px) {
+  #app { flex-direction: column-reverse; }
+  #panel { width: 100%; height: 55%; border-right: 0; border-top: 1px solid var(--line); }
+  #map-wrap { height: 45%; flex: none; }
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자취방 지도 · 경희대 주변 전월세 실거래가</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside id="panel">
+        <header class="panel-head">
+          <h1>자취방 지도</h1>
+          <p class="sub">경희대학교 서울캠퍼스 주변 전월세 실거래가</p>
+          <p id="data-badge" class="badge"></p>
+        </header>
+
+        <!-- 목록 화면: 필터 + 건물 목록 -->
+        <section id="list-view">
+          <div class="filters">
+            <label class="filter">
+              <span>보증금 최대 <b id="deposit-label"></b></span>
+              <input id="deposit-max" type="range" min="100" max="5000" step="100" value="5000" />
+            </label>
+            <label class="filter">
+              <span>월세 최대 <b id="rent-label"></b></span>
+              <input id="rent-max" type="range" min="20" max="100" step="5" value="100" />
+            </label>
+            <div id="type-chips" class="chips"></div>
+            <div class="filter-row">
+              <label>계약 종류
+                <select id="kind">
+                  <option value="전체">전체</option>
+                  <option value="월세">월세만</option>
+                  <option value="전세">전세만</option>
+                </select>
+              </label>
+              <label>전용면적
+                <select id="area-max">
+                  <option value="0">제한 없음</option>
+                  <option value="20">20㎡ 이하 (약 6평)</option>
+                  <option value="33">33㎡ 이하 (약 10평)</option>
+                  <option value="50">50㎡ 이하 (약 15평)</option>
+                </select>
+              </label>
+            </div>
+            <div class="filter-row">
+              <label>통학 목적지
+                <select id="commute-dest"></select>
+              </label>
+              <label>도보 시간
+                <select id="commute-max">
+                  <option value="0">제한 없음</option>
+                  <option value="5">5분 이내</option>
+                  <option value="10">10분 이내</option>
+                  <option value="15">15분 이내</option>
+                  <option value="20">20분 이내</option>
+                </select>
+              </label>
+            </div>
+            <div class="filter-row">
+              <label>정렬
+                <select id="sort">
+                  <option value="recent">최근 계약순</option>
+                  <option value="rent">월세 낮은순</option>
+                  <option value="commute">통학시간 짧은순</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <!-- LH 임대공고: 실거래가와 성격이 달라 지도가 아닌 별도 목록으로 보여 준다. -->
+          <details id="lh-box" class="lh-box" hidden>
+            <summary id="lh-summary"></summary>
+            <ul id="lh-list"></ul>
+            <p class="hint">LH(한국토지주택공사)의 서울 지역 공공임대 공고입니다. 흐린 글씨는 최근 6개월 안에 마감된 공고입니다. 누르면 LH 청약 사이트의 공고문이 새 창으로 열립니다.</p>
+          </details>
+          <p id="count" class="count"></p>
+          <ul id="building-list" class="building-list"></ul>
+        </section>
+
+        <!-- 상세 화면: 건물 하나의 층별 실거래가 -->
+        <section id="detail-view" hidden></section>
+      </aside>
+
+      <main id="map-wrap">
+        <div id="map"></div>
+        <!-- 지도 위에 떠 있는 편의시설 켜고 끄기 버튼 -->
+        <div id="amenity-bar" class="chips"></div>
+        <!-- 로드뷰(거리 사진). "로드뷰 보기"를 누르면 지도를 덮으며 나타난다. -->
+        <div id="roadview-wrap" hidden>
+          <div id="roadview"></div>
+          <div class="roadview-bar">
+            <span id="roadview-title"></span>
+            <button type="button" id="roadview-close">✕ 지도로 돌아가기</button>
+          </div>
+          <p id="roadview-msg" hidden></p>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

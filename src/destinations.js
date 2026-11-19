@@ -1,0 +1,33 @@
+// 자취방에서 자주 가는 목적지 목록.
+// 좌표는 카카오 장소 검색(키워드 검색) 결과를 그대로 옮긴 것이다. (2026-11-12 조회)
+
+export const DESTINATIONS = [
+  { id: 'gate', name: '경희대 정문', lat: 37.5938316, lng: 127.0526979 },
+  { id: 'human-ecology', name: '생활과학대학', lat: 37.5959513, lng: 127.0513451 },
+  { id: 'library', name: '중앙도서관', lat: 37.5970515, lng: 127.0531192 },
+  { id: 'main-hall', name: '본관', lat: 37.5971585, lng: 127.0517174 },
+  { id: 'cheongun', name: '청운관', lat: 37.5949672, lng: 127.0518064 },
+  { id: 'neo', name: '네오르네상스관', lat: 37.5948657, lng: 127.0531018 },
+  { id: 'science', name: '이과대학', lat: 37.5959395, lng: 127.0535509 },
+  { id: 'liberal-arts', name: '문과대학', lat: 37.5972149, lng: 127.0544442 },
+  { id: 'politics-economics', name: '정경대학', lat: 37.5974875, lng: 127.0553616 },
+  { id: 'business', name: '경영대학(오비스홀)', lat: 37.5968522, lng: 127.0554177 },
+  { id: 'student-union', name: '학생회관', lat: 37.5953908, lng: 127.0555027 },
+  { id: 'pureunsol', name: '푸른솔문화관', lat: 37.5944862, lng: 127.0555473 },
+  { id: 'korean-medicine', name: '한의과대학', lat: 37.5959032, lng: 127.0542213 },
+  { id: 'medicine', name: '의과대학', lat: 37.5941803, lng: 127.0546095 },
+  { id: 'dentistry', name: '치과대학', lat: 37.5941447, lng: 127.0537172 },
+  { id: 'pharmacy-college', name: '약학대학', lat: 37.5938015, lng: 127.0554607 },
+  { id: 'nursing', name: '간호과학대학', lat: 37.5956619, lng: 127.0537817 },
+  { id: 'hotel-tourism', name: '호텔관광대학', lat: 37.5954829, lng: 127.0510595 },
+  { id: 'law', name: '제2법학관', lat: 37.5985089, lng: 127.0540556 },
+  { id: 'music', name: '음악대학(크라운관)', lat: 37.5958377, lng: 127.05558 },
+  { id: 'art', name: '미술대학', lat: 37.5957831, lng: 127.0485957 },
+  { id: 'iie', name: '국제교육원', lat: 37.596056, lng: 127.0508696 },
+  { id: 'space21', name: '스페이스21', lat: 37.5958687, lng: 127.0537128 },
+  { id: 'back-gate', name: '경희대 후문', lat: 37.5981142, lng: 127.0541277 },
+  { id: 'peace-hall', name: '평화의전당', lat: 37.5986825, lng: 127.0527738 },
+  { id: 'medical-center', name: '경희의료원', lat: 37.5938752, lng: 127.0518329 },
+  { id: 'hoegi-station', name: '회기역', lat: 37.5897962, lng: 127.0580484 },
+  { id: 'hufs-station', name: '외대앞역', lat: 37.5962741, lng: 127.0636925 },
+]
